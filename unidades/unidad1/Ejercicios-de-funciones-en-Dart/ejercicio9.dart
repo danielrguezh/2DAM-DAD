@@ -6,3 +6,12 @@
  * var porTres = multiplicador(3);
  * print(porTres(5)); // 15
  */
+
+Function multiplicador(int factor) {
+  return (int numero) => numero * factor;
+}
+
+void main() {
+  var porTres = multiplicador(3);
+  print(porTres(5));
+}
