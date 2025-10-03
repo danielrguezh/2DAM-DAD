@@ -3,6 +3,8 @@
  * @version 1.0.0
  */
 
+import 'dart:collection';
+
 /**
  * 1) List – Lista de notas
  * Crea una lista con las notas de 5 alumnos.
@@ -75,7 +77,13 @@ void mostrarProductos(Map<String, double> productos){
  *     Muestra todas las tareas restantes.
  * Usa addAll y removeFirst.
  */
-
+bool aniadirTareas(Queue<String> tareas, String nuevaTarea) {
+  if (tareas.contains(nuevaTarea)) {
+    return false;
+  }
+  tareas.add(nuevaTarea);
+  return true;
+}
 
 /**
  * 5) SplayTreeSet – Números ordenados
@@ -86,20 +94,50 @@ void mostrarProductos(Map<String, double> productos){
  *     Imprime el conjunto final.
  * Usa addAll y remove.
  */
+SplayTreeSet<int> aniadirNumeros(SplayTreeSet<int> numeros, List<int> nuevosNumeros) {
+  numeros.addAll(nuevosNumeros);
+  return numeros;
+}
 
 void main(){
   print("-----Ejercicio1-----");
+  
   List<int>notas=[1,2,3,4,5];
   int nota=6;
   mostrarNotas(notas,nota);
+
   print("-----Ejercicio2-----");
+
   Set<String> correos ={"ana@mail.com", "luis@mail.com", "ana@mail.com", "pedro@mail.com"};
   String correo = "luis@mail.com";
   print(correos);
   agregarCorreos(correos, correo);
   print(correos);
+
   print("-----Ejercicio3-----");
 
+  Map<String, double> productos = {"pan": 1.0, "leche": 1.5, "huevos": 2.0};
+  String productoBuscar = "leche";
+  mostrarPrecioProducto(productos, productoBuscar);
+  String productoAniadir = "manzana";
+  double precio = 1.2;
+  print(agregarProductos(productos, productoAniadir, precio));
+  mostrarProductos(productos);
+
   print("-----Ejercicio4-----");
+
+  Queue<String> tareas = Queue.from(["Lavar platos", "Hacer compra", "Estudiar"]);
+  String tarea = "Pasear perro";
+  print(tareas);
+  print(tareas.removeFirst());
+  print(aniadirTareas(tareas, tarea));
+  print(tareas);
+
   print("-----Ejercicio5-----");
+
+  SplayTreeSet<int> numeros = SplayTreeSet<int>();
+  List<int> nuevosNumeros = [5, 3, 9, 1, 4];
+  print(aniadirNumeros(numeros, nuevosNumeros));
+  numeros.remove(3);
+  print(numeros);
 }
