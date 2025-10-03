@@ -10,7 +10,23 @@
  * 	Programa en Dart un descodificador que revierta el proceso y recupere el mensaje original. 
  * Luego responde a la siguiente pregunta:
  * ¿Cuál es el mensaje original? 
+ * 
+ * @author danielrguezh
+ * @version 1.0.0
  */
-String descodificadorCesar(){
-  return"";
+
+String decodificadorCesar(String codigo) {
+  return String.fromCharCodes(
+    codigo.codeUnits.map((n) {
+      if ((n >= 65 && n <= 90) || (n >= 97 && n <= 122)) {
+        return n - 3;
+      }
+      return n;
+    })
+  );
+}
+
+void main() {
+  String codigo = "Zlqjduglxp#Ohylrvd";
+  print(decodificadorCesar(codigo));
 }
