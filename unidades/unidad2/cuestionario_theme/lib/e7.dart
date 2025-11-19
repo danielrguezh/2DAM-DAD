@@ -29,7 +29,15 @@ class HomePage extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [],
+          children: [
+            Text("hola"),
+            Icon(Icons.star),
+            ElevatedButton(onPressed: () {}, child: Text("Enviar")),
+            Theme(
+              data: Theme.of(context).copyWith(elevatedButtonTheme: ElevatedButtonThemeData()),
+              child: Text("Hola")
+            )
+          ],
         ),
       ),
     );
