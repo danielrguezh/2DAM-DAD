@@ -21,16 +21,16 @@ class MyTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 15),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: Colors.black, width: 1),
-      ),
       child: TextField(
         decoration: InputDecoration(
-          icon: Icon(icon),
+          filled: true,
+          fillColor: Colors.black,
+          prefixIcon: Icon(icon),
           hintText: hintText,
-          border: InputBorder.none,
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(18),
+            borderSide: const BorderSide(color: Colors.white, width: 1)
+          )
         ),
       ),
     );
@@ -56,12 +56,12 @@ class MyMainWidget extends StatelessWidget {
               children: const [
                 MyTextField(
                   hintText: "Nombre",
-                  icon: Icons.person,
+                  icon: Icons.lock,
                 ),
                 SizedBox(height: 20),
                 MyTextField(
                   hintText: "Email",
-                  icon: Icons.email,
+                  icon: Icons.lock,
                 ),
               ],
             ),
