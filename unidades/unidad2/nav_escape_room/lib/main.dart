@@ -15,17 +15,13 @@ class EscapeRoomApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (_) => const SalaInicial(),
-        // Añade aquí las rutas que faltan 
+        '/pista1': (_) => const Pista1(),
+        '/victoria': (_) => const Victoria(),
+        '/atrapado': (_) => const Atrapado(),
       },
     );
   }
 }
-
-// Aquí debes crear las clases:
-// - SalaInicial
-// - Pista1
-// - Victoria
-// - Atrapado
 
 class SalaInicial extends StatelessWidget {
   const SalaInicial({super.key});
@@ -33,9 +29,47 @@ class SalaInicial extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Escape Room')),
-      body: const Center(
-        child: Text('Aquí empieza tu Escape Room'),
+      appBar: AppBar(title: const Text('Escape Room - Hogwarts')),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              '¿A qué casa pertenece Harry Potter?',
+              style: TextStyle(fontSize: 20),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 20),
+
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/pista1');
+              },
+              child: const Text('Gryffindor'),
+            ),
+
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/atrapado');
+              },
+              child: const Text('Hufflepuff'),
+            ),
+
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/atrapado');
+              },
+              child: const Text('Slytherin'),
+            ),
+
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/atrapado');
+              },
+              child: const Text('Ravenclaw'),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -48,8 +82,46 @@ class Pista1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Pista 1')),
-      body: const Center(
-        child: Text('Segunda pantalla del Escape Room'),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              '¿Desde dónde sale el Hogwarts Express?',
+              style: TextStyle(fontSize: 20),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 20),
+
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/victoria');
+              },
+              child: const Text('Andén 9¾'),
+            ),
+
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/atrapado');
+              },
+              child: const Text('Estación Central de Londres'),
+            ),
+
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/atrapado');
+              },
+              child: const Text('Andén 7½'),
+            ),
+
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/atrapado');
+              },
+              child: const Text('Hogsmeade'),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -61,9 +133,26 @@ class Victoria extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.green,
       appBar: AppBar(title: const Text('Victoria')),
-      body: const Center(
-        child: Text('Has escapado con éxito'),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              '¡Has escapado con éxito!',
+              style: TextStyle(fontSize: 22),
+            ),
+            const SizedBox(height: 20),
+
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/');
+              },
+              child: const Text('Volver a empezar'),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -75,9 +164,26 @@ class Atrapado extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.red,
       appBar: AppBar(title: const Text('Game Over')),
-      body: const Center(
-        child: Text('Has quedado atrapado'),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Has quedado atrapado',
+              style: TextStyle(fontSize: 22),
+            ),
+            const SizedBox(height: 20),
+
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/');
+              },
+              child: const Text('Intentar de nuevo'),
+            ),
+          ],
+        ),
       ),
     );
   }
